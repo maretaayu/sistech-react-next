@@ -1,5 +1,4 @@
-import { Button, Card } from "../components";
-import { CardListContainer } from "../components/Card/CardListContainer";
+import { Button, Card, CardListContainer, ProfileUser } from "../components";
 
 export default function Page() {
   return (
@@ -9,7 +8,7 @@ export default function Page() {
         description="10 min"
         thumbnail="/images/DummyThumbnail.png"
       /> */}
-      <div className=""></div>
+      <ProfileUser name="mareta" imageUrl="/images/DummyProfile.png" />
 
       <CardListContainer />
       <Button>Click me</Button>
