@@ -1,21 +1,24 @@
 import { CardList } from "./CardList";
-
-const data = [
-  {
-    title: "lorem ipsum",
-    description: "10 min",
-    thumbnail: "/images/DummyThumbnail.png",
-    url: "https://mareta.codes/",
-  },
-  {
-    title: "lorem ipsum",
-    description: "10 min",
-    thumbnail: "/images/DummySleep.png",
-    url: "instagram.com",
-  },
-];
+import { useEffect, useState } from "react";
 
 function CardListContainer() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://jsonplaceholder.typicode.com/photos/?_limit=2"
+        );
+        const jsonData = await res.json();
+        setData(jsonData);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return <CardList cards={data} />;
 }
 
